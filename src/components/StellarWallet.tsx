@@ -37,15 +37,22 @@ export function StellarWallet({ amount, destination, memo, onPaymentSent }: Stel
     setConnecting(true);
     setError("");
     try {
-      const { isConnected, getPublicKey, getNetwork } = await import("@stellar/freighter-api");
-      const connected = await isConnected();
-      if (!connected) {
-        setError("Freighter no está conectado. Abre la extensión y desbloquéala.");
+      const { isConnected, requestAccess, getAddress, getNetwork } = await import("@stellar/freighter-api");
+      const connectedResult = await isConnected();
+      if (!connectedResult.isConnected) {
+        setError("Freighter no detectado. Instala la extensión primero.");
         return;
       }
-      const publicKey = await getPublicKey();
-      const network = await getNetwork();
-      setWallet({ connected: true, publicKey, network: network.network });
+      // Solicitar acceso
+      await requestAccess();
+      const addressResult = await getAddress();
+      const networkResult = await getNetwork();
+      if (addressResult.error) throw new Error(addressResult.error);
+      setWallet({
+        connected: true,
+        publicKey: addressResult.address,
+        network: networkResult.network || "testnet",
+      });
     } catch (e) {
       setError("Error conectando Freighter: " + (e as Error).message);
     } finally {
