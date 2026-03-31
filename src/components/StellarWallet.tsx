@@ -78,7 +78,7 @@ export function StellarWallet({ amount, destination, memo, onPaymentSent }: Stel
       // Para el demo, usamos el Transaction Builder de laboratory
       const labUrl = `https://laboratory.stellar.org/#txbuilder?params=${encodeURIComponent(JSON.stringify({
         sourceAccount: wallet.publicKey,
-        sequence: String(BigInt(sequence) + 1n),
+        sequence: String(parseInt(sequence) + 1),
         fee: "100",
         memo: { type: "text", content: memo },
         operations: [{
