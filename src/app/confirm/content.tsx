@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ArrowLeft, Copy, Check, ShieldCheck, ExternalLink, CheckCircle2, Sparkles } from "lucide-react";
+import { StellarWallet } from "@/components/StellarWallet";
 
 const MERCHANT_ADDRESS = "GAAZI4TCR3TY5OJHCTJC2A4QSY6CJWJH5IAJTGKIN2ER7LBNVKOCCWN";
 
@@ -235,6 +236,19 @@ export function ConfirmContent() {
                 <ExternalLink className="w-4 h-4" />
                 Abrir Stellar Laboratory (Testnet)
               </a>
+
+              {/* Freighter Wallet */}
+              <div className="pt-2">
+                <p className="text-xs text-zinc-500 mb-2 font-medium">O paga directo con tu wallet:</p>
+                <StellarWallet
+                  amount={amount}
+                  destination={MERCHANT_ADDRESS}
+                  memo={memo}
+                  onPaymentSent={(hash) => {
+                    setTxHash(hash);
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
