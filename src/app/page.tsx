@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ShoppingBag, MessageCircle, CreditCard, Bot, Brain, ShieldCheck } from "lucide-react";
+import { ShoppingBag, MessageCircle, CreditCard, Bot, Brain, ShieldCheck, Sparkles } from "lucide-react";
 
 export default function Home() {
   const router = useRouter();
@@ -26,7 +26,7 @@ export default function Home() {
       </div>
 
       {/* Navigation buttons */}
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-2xl mb-12">
+      <div className="relative z-10 grid grid-cols-2 sm:grid-cols-4 gap-4 w-full max-w-3xl mb-12">
         <button
           onClick={() => router.push("/setup")}
           className="group flex flex-col items-center gap-3 bg-zinc-900/80 border border-zinc-800 rounded-2xl p-6 hover:border-violet-500/50 hover:bg-zinc-900 transition-all duration-300"
@@ -59,6 +59,17 @@ export default function Home() {
           <span className="text-white font-semibold">Demo Pago</span>
           <span className="text-zinc-500 text-xs">Stellar x402</span>
         </button>
+
+        <button
+          onClick={() => router.push("/advertising")}
+          className="group flex flex-col items-center gap-3 bg-zinc-900/80 border border-yellow-500/20 rounded-2xl p-6 hover:border-yellow-500/50 hover:bg-zinc-900 transition-all duration-300"
+        >
+          <div className="p-3 bg-yellow-500/10 rounded-xl group-hover:bg-yellow-500/20 transition-colors">
+            <Sparkles className="w-7 h-7 text-yellow-400" />
+          </div>
+          <span className="text-white font-semibold">Publicidad</span>
+          <span className="text-zinc-500 text-xs">Agente IA ✨</span>
+        </button>
       </div>
 
       {/* Hackathon badge */}
@@ -84,6 +95,10 @@ export default function Home() {
         <div className="flex items-center gap-2 bg-zinc-900/50 border border-zinc-800/50 rounded-full px-4 py-2">
           <ShieldCheck className="w-4 h-4 text-green-400" />
           <span className="text-zinc-400 text-xs">Agente Checkout</span>
+        </div>
+        <div className="flex items-center gap-2 bg-zinc-900/50 border border-yellow-500/20 rounded-full px-4 py-2">
+          <Sparkles className="w-4 h-4 text-yellow-400" />
+          <span className="text-zinc-400 text-xs">Agente Publicidad</span>
         </div>
       </div>
     </div>
