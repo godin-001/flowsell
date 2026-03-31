@@ -156,7 +156,7 @@ Abre [http://localhost:3000](http://localhost:3000)
 
 ## Links
 
-- 🌐 **Demo:** https://flowsell.vercel.app
+- 🌐 **Demo:** https://flowsell-chi.vercel.app
 - 🔗 **GitHub:** https://github.com/godin-001/flowsell
 - 🏆 **Hackathon:** [Stellar Agents Hackathon — DoraHacks](https://dorahacks.io)
 
